@@ -1,4 +1,4 @@
-package com.doza.sber;
+package com.doza.sber.model;
 
 public class City {
     private String name;

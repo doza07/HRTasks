@@ -1,20 +1,25 @@
 package com.doza.sber;
 
 
+import com.doza.sber.repositories.CityRepository;
+import com.doza.sber.service.CityService;
+
 import java.io.FileNotFoundException;
-import java.util.List;
-
-import static com.doza.sber.CityParse.parseCity;
-
+import java.io.IOException;
 
 public class Main {
 
 
     public static void main( String[] args ) throws FileNotFoundException {
 
-            List<City> cityList = parseCity();
-        System.out.println(cityList);
+        try {
+            CityRepository cityRepository = new CityRepository();
+            CityService cityService = new CityService(cityRepository);
 
+            cityService.printCountCityInRegion();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
