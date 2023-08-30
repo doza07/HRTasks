@@ -15,7 +15,7 @@ class Main {
         FlightBuilder flightBuilder = new FlightBuilder();
         List<Flight> flightList = flightBuilder.createFlights();
 
-        SegmentFilter segmentFilter = new SegmentFilterImpl();
+        SegmentFilter segmentFilter = new SegmentFilter();
         segmentFilter.getAllSegments(flightList);
 
         System.out.println("\nФильтр номер 1. Сегменты с датой отправления после текущего времени\n");
@@ -133,20 +133,8 @@ class Segment {
     }
 }
 
-interface SegmentFilter {
 
-
-    void getAllSegments(List<Flight> flights);
-
-    Set<Flight> getDepartureTimeBeforeNow(List<Flight> flights);
-
-    Set<Flight> getArrivalDateLessDepartureDate(List<Flight> flights);
-
-    Set<Flight> getFlightWithTransferMoreThanTwoHours(List<Flight> flights);
-
-}
-
-class SegmentFilterImpl implements SegmentFilter {
+class SegmentFilter  {
 
     public void getAllSegments(List<Flight> flights) {
         for (Flight flight : flights) {
